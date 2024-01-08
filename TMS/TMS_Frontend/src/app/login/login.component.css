@@ -1,0 +1,85 @@
+.left_background_img{
+    height: 25rem;
+    margin-top: 10.4rem;
+    /* margin-left: 0rem; */
+    width: 21rem;
+}
+.main_div{
+    background-color: rgb(250, 251, 252);
+    height: 44rem;
+    width: 76.2rem;
+}
+.second_col{
+    padding-right: 0;
+    margin-top: 6rem;
+    padding-left: 0rem;
+}
+.login_text_p{
+    margin-left: 7.1rem;
+    margin-top: 2.8rem;
+    font-family: auto;
+}
+.card_row{
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+}
+.login_btn{
+    margin-top: 20rem;
+    position: absolute;
+    margin-left: 1rem;
+    width: 19rem;
+}
+.card_div{
+    width: 23rem;
+    height: 42.5rem;
+    margin-left: 4rem;
+    position: absolute;
+    bottom: 0rem;
+    top: 1rem;
+}
+.create_account{
+    position: absolute;
+    left: 7.5rem;
+    top: 39.7rem;
+}
+.right_background_img{
+    height: 22rem;
+    margin-top: 20rem;
+    position: absolute;
+    width: 14.5rem;
+    top: 2rem;
+    left: 60rem;
+}
+.clearbtn{
+    margin-left: 1rem;
+    margin-top: 23.9rem;
+    width: 19rem;
+}
+.username_div{
+    position: absolute;
+    top: 10rem;
+    width: 21rem;
+}
+.username_validation_div{
+    padding: 0.2rem;
+    position: absolute;
+    top: 14rem;
+    width: 21rem;
+}
+.password_div{
+    position: absolute;
+    top: 16.8rem;
+    width: 21rem;
+}
+.password_validation_div{
+    padding: 0.2rem;
+    position: absolute;
+    top: 20.8rem;
+    width: 21rem;
+}
+.Id_validation_div{
+    padding: 0.2rem;
+    position: absolute;
+    top: 12.3rem;
+    width: 21rem;
+}

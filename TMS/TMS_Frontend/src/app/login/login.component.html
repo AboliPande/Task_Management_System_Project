@@ -1,0 +1,73 @@
+<div class="main_div container-fluid">
+    <!-- <img src="https://tse1.mm.bing.net/th?id=OIP.lp1Ryt5o-2u-kt_XHNLy5AHaHa&pid=Api&P=0&h=180" alt=""> -->
+    <div class="row align-items-start">
+        <div class="col-4" style="padding-right: 0;">
+            <img class="left_background_img" src="https://img.freepik.com/free-vector/mobile-note-list-concept-illustration_114360-6275.jpg?size=626&ext=jpg&ga=GA1.1.292817933.1704106504&semt=ais" alt="Background_image">
+        </div>
+        <div class="col-5 second_col">
+            <div class="card card_div">
+                <div class="card-body">
+                    <div class="row card_row">
+                        <div class="col-4" style="padding: 0;position: absolute;bottom: 26rem;">
+                            <img src="https://tse1.mm.bing.net/th?id=OIP.lp1Ryt5o-2u-kt_XHNLy5AHaHa&pid=Api&P=0&h=180" alt="logo_image" style="height: 2rem;margin-left: 4.3rem;position: absolute;bottom: 12rem;">
+                        </div>
+                        <div class="col-6" style="padding: 0;position: absolute;left: 8.8rem;bottom: 37.8rem;">
+                            <h5 class="card-title">Aboli's TMS</h5>
+                        </div>
+                    </div>
+                    <p class="card-text login_text_p">Log in to continue</p>
+                    <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit()">
+                        <!-- <div class="input-group mb-3 Id_div">
+                            <span class="input-group-text">#</span>
+                            <div class="form-floating">
+                              <input type="number" class="form-control" [(ngModel)]="user.id" formControlName="id" id="floatingInput" placeholder="ID">
+                              <label for="floatingInput">ID</label>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger Id_validation_div" *ngIf="Id && Id.invalid && Id.touched">
+                            <div *ngIf="Id.errors?.['required']">
+                                Id is required
+                            </div>
+                        </div> -->
+                        <div class="input-group mb-3 username_div">
+                            <span class="input-group-text">@</span>
+                            <div class="form-floating">
+                              <input type="email" class="form-control" formControlName="emailId" id="floatingInput" placeholder="Username">
+                              <label for="floatingInput">Username</label>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger username_validation_div" *ngIf="EmailId && EmailId.invalid && EmailId.touched">
+                            <div *ngIf="EmailId.errors?.['required']">
+                                Email Id is Required
+                            </div>
+                            <div *ngIf="EmailId.errors?.['pattern']">
+                                Email Id is not in a Valid Format
+                            </div>
+                        </div>
+                        <div class="input-group mb-3 password_div">
+                            <span class="input-group-text" style="padding-right: 1.3rem;">*</span>
+                            <div class="form-floating">
+                              <input type="password" class="form-control" formControlName="password" id="floatingPassword" placeholder="Password">
+                              <label for="floatingPassword">Password</label>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger password_validation_div" *ngIf="Password && Password.invalid && Password.touched">
+                            <div *ngIf="Password.errors?.['required']">
+                                Password is Required
+                            </div>
+                            <div *ngIf="Password.errors?.['pattern']">
+                                Password is not valid......It should atleast contain 1 uppercase, 1 lowercase, 1 digit and 1 special symbol and should be atleast 8 characters long
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-danger login_btn" [disabled]="loginForm.invalid">Log In</button>
+                        <button type="reset" class="btn btn-outline-warning clearbtn">Clear</button>
+                        <!-- <a routerLink="/create-account" class="create_account">Create an account</a> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <img src="https://img.freepik.com/free-vector/appointment-booking-with-smartphone_23-2148554946.jpg?size=626&ext=jpg&ga=GA1.1.292817933.1704106504&semt=ais" alt="Background_image" class="right_background_img">
+        </div>
+    </div>
+</div>

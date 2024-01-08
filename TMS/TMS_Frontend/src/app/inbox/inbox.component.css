@@ -1,0 +1,20 @@
+.left_image{
+    width: 17rem;
+    margin-top: 3rem;
+    margin-left: 2rem;
+}
+.Inbox_H1{
+    margin-top: 6rem;
+    margin-left: 17.8rem;
+    width: 9rem;
+}
+.Inbox_Col{
+    padding-left: 0;
+    margin-left: 0;
+}
+.add_task_link{
+    padding-top: 0.8px;
+    font-style: italic;
+    font-family: emoji;
+    font-weight: 700;
+}

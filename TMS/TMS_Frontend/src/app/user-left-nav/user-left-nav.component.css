@@ -1,0 +1,34 @@
+.user_name_p{
+    position: absolute;
+    bottom: 33rem;
+}
+.add_task_link{
+    padding-top: 0.8px;
+    font-style: italic;
+    font-family: emoji;
+    font-weight: 700;
+}
+
+.task_name_field{
+    border-style: none;
+    width: 29rem;
+    padding-bottom: 0;
+}
+.describe_label{
+    font-size: 16px;
+    font-weight: 600;
+    padding-top: 6px;
+    padding-bottom: 0;
+}
+.task_id_label{
+    font-size: 16px;
+    font-weight: 600;
+    padding-top: 6px;
+    padding-bottom: 0;
+}
+.add_logout_link{
+    padding-top: 0.8px;
+    font-style: italic;
+    font-family: emoji;
+    font-weight: 700;
+}

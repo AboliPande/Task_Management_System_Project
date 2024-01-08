@@ -1,0 +1,125 @@
+<div class="container-fluid" style="padding-left: 0px;">
+  <nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 15rem;">
+        <div class="offcanvas-header">
+          <div class="offcanvas-title" id="offcanvasNavbarLabel">
+            <div class="row">
+              <div class="col" style="padding-right: 0.5rem;"><i class="fa-regular fa-circle-user"></i></div>
+                <div class="col" style="padding-left: 0;">
+                  <div class="dropdown">
+                    <a class="btn dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding:0px;position: absolute;top: 0px;">User</a>
+                    <ul class="dropdown-menu" style="margin-top: 1.8rem;">
+                      <li>
+                      </li>
+                      <li><a class="dropdown-item" routerLink="/login">Log Out</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" data-bs-toggle="modal" href="#exampleModal">
+                    <div class="row">
+                      <div class="col-1">
+                        <i class="fa-solid fa-circle-plus" style="color: brown;"></i>
+                      </div>
+                      <div class="col-7">
+                        <p class="nav-link active add_task_link" aria-current="page" style="color: #f82946;">Add New Task</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" routerLink="/user/task-inbox">
+                    <div class="row">
+                      <div class="col-1">
+                        <i class="fa-solid fa-inbox" style="color: brown;"></i>
+                      </div>
+                      <div class="col-7">
+                        <p class="nav-link active add_task_link" aria-current="page" style="color: #f82946;">Inbox</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" data-bs-toggle="modal" href="#exampleModal">
+                    <div class="row">
+                      <div class="col-1">
+                        <i class="fa-solid fa-right-from-bracket" style="color: brown;"></i>
+                      </div>
+                      <div class="col-7">
+                        <p class="nav-link active add_logout_link" routerLink="/login" aria-current="page" style="color: #f82946;">Log Out</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+      </div>
+    </div>
+  </nav>
+  <form [formGroup]="taskForm" (ngSubmit)="taskFormSubmit()">
+  <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="padding-bottom: 11px;">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            <div class="form-floating" style="margin-bottom: 7px;">
+              <input type="number" class="form-control" [(ngModel)]="task.task_id" formControlName="task_id" id="floatingInput" placeholder="Task Id"style="border-style: none;padding-bottom: 0px;padding-top: 20px;">
+              <label for="floatingInput" style="color: #4ea2a4;" class="task_id_label">Task Id</label>
+            </div>
+            <div class="alert alert-danger" style="padding:0;margin-top: 0.7rem;" *ngIf="TaskId && TaskId.invalid && TaskId.touched">
+              <div *ngIf="TaskId.errors?.['required']" style="font-size: medium;">
+                  Id is required
+              </div>
+            </div>
+            <hr style="width: 31.2rem;position: absolute;top: 4rem;left: 0rem;">
+            <div class="form-floating">
+              <input type="text" class="form-control task_name_field" [(ngModel)]="task.task_name" formControlName="task_name" id="floatingInput" placeholder="Task Name">
+              <label for="floatingInput task_name_label" style="color: #4ea2a4;font-size: 1rem;"> Task Name</label>
+            </div>
+            <div class="alert alert-danger" style="padding:0;margin-top: 0.7rem;" *ngIf="TaskName && TaskName.invalid && TaskName.touched">
+              <div *ngIf="TaskName.errors?.['required']" style="font-size: medium;">
+                  Task Name is required
+              </div>
+            </div>
+          </h1>
+        </div>
+        <div class="modal-body" style="padding-bottom: 0;padding-top: 0px;">
+          <div class="form-floating">
+            <input type="text" class="form-control" [(ngModel)]="task.description" id="floatingInput" formControlName="description" placeholder="Description" style="border-style: none;">
+            <label for="floatingInput" class="describe_label" style="color: #f50545;"> Description</label>
+          </div>
+          <div class="alert alert-danger" style="padding:0;margin-top: 0.7rem;" *ngIf="desc && desc.invalid && desc.touched">
+            <div *ngIf="desc.errors?.['required']" style="font-size: medium;">
+                Description is required
+            </div>
+        </div>
+          <hr style="width: 31.2rem;position: absolute;left: 0rem;top: 2.9rem;">
+          <div class="form-floating" style="margin-top: 7px;">
+            <input type="date" class="form-control" [(ngModel)]="task.overdue" id="floatingInput" formControlName="overdue" placeholder="Overdue" style="border-style: none;">
+            <label for="floatingInput" style="color: #cf05f5;font-size: 18px;font-weight: 600;">Overdue</label>
+          </div>
+          <div class="alert alert-danger" style="padding:0;margin-top: 0.7rem;" *ngIf="Overdue && Overdue.invalid && Overdue.touched">
+            <div *ngIf="Overdue.errors?.['required']" style="font-size: medium;">
+                Overdue Date is required
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-outline-danger" [disabled]="taskForm.invalid">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>

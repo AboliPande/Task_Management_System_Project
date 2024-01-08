@@ -1,0 +1,109 @@
+<div class="main_div container-fluid">
+    <div class="row align-items-start">
+        <div class="col-4" style="padding-right: 0;">
+            <img class="left_background_img" src="https://img.freepik.com/premium-vector/successful-completion-business-tasks-positive-businessman-with-giant-pencil-nearby-marked-checklist-clipboard-paper-hand-drawn-vector-illustration-doodle-style_73637-873.jpg?size=626&ext=jpg&ga=GA1.1.292817933.1704106504&semt=ais" alt="Background_image" class="left_image">
+
+            <img class="left_background_img" src="https://img.freepik.com/premium-vector/list-girl-holds-red-pencil-notes-completed-tasks-time-time-management-concept-illustration_173706-34.jpg?size=626&ext=jpg&ga=GA1.1.292817933.1704106504&semt=ais" class="left_image">
+        </div>
+        <div class="col-7 Inbox_Col">
+            <h1 class="Inbox_H1">Inbox</h1>
+            <hr>
+            <a class="nav-link active" aria-current="page" data-bs-toggle="modal" href="#exampleModal">
+                <div class="row">
+                  <div class="col-1" style="width: 2rem;">
+                    <i class="fa-solid fa-circle-plus" style="color: brown;"></i>
+                  </div>
+                  <div class="col-4" style="padding-left: 6px;">
+                    <p class="nav-link active add_task_link" aria-current="page" style="color: #f82946;">Add New Task</p>
+                  </div>
+                </div>
+            </a>
+            <div *ngFor="let item of tasks" style="width:23rem;margin-bottom: 2rem;">
+              <div class="card text-start">
+                <div class="card-header">
+                  {{item.task_id}}
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{item.task_name}}</h5>
+                  <p class="card-text">{{item.description}}</p>
+                  <p class="card-text">{{item.overdue}}</p>
+                  <div style="margin-bottom:1rem;">
+                    <button type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 21rem;" class="btn btn-outline-info">Update</button>
+                  </div>
+
+                  <form [formGroup]="updateTaskForm" >
+                    <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header" style="padding-bottom: 11px;">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                              <div class="form-floating" style="margin-bottom: 7px;">
+                                <input type="number" class="form-control" [(ngModel)]="task.task_id" formControlName="Task_id" id="floatingInput" placeholder="Task Id"style="border-style: none;width: 29.4rem;padding-bottom: 0px;padding-top: 20px;">
+                                <label for="floatingInput" style="color: #4ea2a4;" class="task_id_label">Task Id</label>
+                              </div>
+                              <div class="alert alert-danger" style="padding:0;margin-top: 0.7rem;" *ngIf="TaskId && TaskId.invalid && TaskId.touched">
+                                <div *ngIf="TaskId.errors?.['required']" style="font-size: medium;">
+                                    Id is required
+                                </div>
+                              </div>
+                              <hr style="width: 31.2rem;position: absolute;top: 4rem;left: 0rem;">
+                              <div class="form-floating">
+                                <input type="text" class="form-control task_name_field" [(ngModel)]="task.task_name" formControlName="task_name" id="floatingInput" placeholder="Task Name" style="width: 29.4rem;border-style: none;">
+                                <label for="floatingInput task_name_label" style="color: #4ea2a4;font-size: 1rem;"> Task Name</label>
+                              </div>
+                              <div class="alert alert-danger" style="padding:0;margin-top: 0.7rem;" *ngIf="TaskName && TaskName.invalid && TaskName.touched">
+                                <div *ngIf="TaskName.errors?.['required']" style="font-size: medium;">
+                                    Task Name is required
+                                </div>
+                              </div>
+                            </h1>
+                          </div>
+                          <div class="modal-body" style="padding-bottom: 0;padding-top: 0px;">
+                            <div class="form-floating">
+                              <input type="text" class="form-control" [(ngModel)]="task.description" id="floatingInput" formControlName="description" placeholder="Description" style="border-style: none;">
+                              <label for="floatingInput" class="describe_label" style="color: #f50545;"> Description</label>
+                            </div>
+                            <div class="alert alert-danger" style="padding:0;margin-top: 0.7rem;" *ngIf="desc && desc.invalid && desc.touched">
+                              <div *ngIf="desc.errors?.['required']" style="font-size: medium;">
+                                  Description is required
+                              </div>
+                          </div>
+                            <hr style="width: 31.2rem;position: absolute;left: 0rem;top: 2.9rem;">
+                            <div class="form-floating" style="margin-top: 7px;">
+                              <input type="date" class="form-control" [(ngModel)]="task.overdue" id="floatingInput" formControlName="overdue" placeholder="Overdue" style="border-style: none;">
+                              <label for="floatingInput" style="color: #cf05f5;font-size: 18px;font-weight: 600;">Overdue</label>
+                            </div>
+                            <div class="alert alert-danger" style="padding:0;margin-top: 0.7rem;" *ngIf="Overdue && Overdue.invalid && Overdue.touched">
+                              <div *ngIf="Overdue.errors?.['required']" style="font-size: medium;">
+                                  Overdue Date is required
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                            <button type="button" (click)="saveChanges(item.task_id)" class="btn btn-outline-danger" [disabled]="updateTaskForm.invalid">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </form>
+
+                  <div>
+                    <button (click)="deleteTask(item.task_id)" style="width: 21rem;" class="btn btn-outline-danger">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <a class="nav-link active" aria-current="page" data-bs-toggle="modal" href="#exampleModal">
+              <div class="row">
+                <div class="col-1" style="width: 2rem;">
+                  <i class="fa-solid fa-circle-plus" style="color: brown;"></i>
+                </div>
+                <div class="col-4" style="padding-left: 6px;">
+                  <p class="nav-link active add_task_link" aria-current="page" style="color: #f82946;">Add New Task</p>
+                </div>
+              </div>
+          </a> -->
+        </div>
+    </div>
+</div>
